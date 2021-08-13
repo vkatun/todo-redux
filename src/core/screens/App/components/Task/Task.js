@@ -2,21 +2,19 @@ import { useState } from 'react';
 import { ContentEditor } from '../ContentEditor/ContentEditor';
 import { TaskWrapper, ButtonsWrapper } from './styled';
 import { Button } from 'react-bootstrap';
+import  { taskDelete, taskChangeCheckbox } from '../../../../../store/main/main.actions'
+import { useDispatch } from 'react-redux';
 
 export const Task = ({
   id,
   content,
-  key,
   isChecked,
-  handleDeleteTask,
-  handleCheckboxChecked,
-  editTask,
 }) => {
   const [isEditorOpened, setIsEditorOpened] = useState(false);
+  const dispatch = useDispatch()
+  const deleteTask = () => dispatch(taskDelete(id))
 
-  const deleteTask = () => handleDeleteTask(id);
-
-  const handleCheckboxChange = () => handleCheckboxChecked(id);
+  const handleCheckboxChange = () => dispatch(taskChangeCheckbox(id));
 
   return (
     <TaskWrapper key={id} id={id}>
@@ -26,7 +24,7 @@ export const Task = ({
         onChange={() => handleCheckboxChange(id)}
       />
       {isEditorOpened ? (
-        <ContentEditor editTask={editTask} id={id} content={content} />
+        <ContentEditor id={id} content={content} />
       ) : (
         content
       )}

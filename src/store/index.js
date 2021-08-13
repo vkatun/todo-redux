@@ -1,14 +1,15 @@
 
 import { createStore } from 'redux';
-import { handleTaskCreate } from './main/main.reducers';
+import { rootReducer } from './root.reducer';
 
 
 const configureStore = initialState => {
   const store = createStore(
-  handleTaskCreate,
+  rootReducer,
   initialState,
-  )
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
   return store
 }
 
 export default configureStore
+

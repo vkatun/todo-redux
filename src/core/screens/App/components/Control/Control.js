@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button, FormControl } from 'react-bootstrap';
 import { ControlWrapper, InputWrapper, ButtonWrapper } from './styled';
+import  { taskCreate } from '../../../../../store/main/main.actions'
 
-export const Control = ({ handleSumbitСontent }) => {
+export const Control = () => {
   const [inputText, setInputText] = useState('');
+  
+  const dispatch = useDispatch()
 
-  const handleContent = () => {
-    if (inputText) {
-      handleSumbitСontent(inputText);
-    }
-    setInputText('');
-  };
   const handleText = e => {
     setInputText(e.target.value);
+  };
+  
+  const handleContent = () => {
+    if (inputText) {
+      dispatch(taskCreate(inputText));
+    }
+    setInputText('');
   };
 
   const handleEnterDown = e => {
@@ -20,6 +25,7 @@ export const Control = ({ handleSumbitСontent }) => {
       handleContent();
     }
   };
+ 
 
   return (
     <ControlWrapper>

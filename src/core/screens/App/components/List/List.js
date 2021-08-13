@@ -2,13 +2,12 @@ import React from 'react';
 import { Task } from '../Task/Task';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import { ListWrapper } from './styled';
+import { useSelector } from 'react-redux'
 
-export const List = ({
-  tasks,
-  handleDeleteTask,
-  handleCheckboxChecked,
-  editTask,
-}) => {
+
+export const List = () => {
+  const tasks = useSelector(state => state.main.tasks)
+  
   return (
     <ListWrapper>
       <ListGroup>
@@ -16,9 +15,6 @@ export const List = ({
           return (
             <ListGroupItem>
               <Task
-                editTask={editTask}
-                handleDeleteTask={handleDeleteTask}
-                handleCheckboxChecked={handleCheckboxChecked}
                 key={task.id}
                 id={task.id}
                 content={task.content}
@@ -30,4 +26,6 @@ export const List = ({
       </ListGroup>
     </ListWrapper>
   );
+
+
 };
