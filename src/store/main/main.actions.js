@@ -2,6 +2,7 @@ export const TASK_CREATE = 'TASK_CREATE';
 export const TASK_CHANGE_TEXT = 'TASK_CHANGE_TEXT';
 export const TASK_DELETE = 'TASK_DELETE';
 export const TASK_CHANGE_CHECKBOX = 'TASK_CHANGE_CHECKBOX';
+export const TASKS_SET = 'TASKS_SET';
 
 export const taskCreate = taskText => ({
   type: TASK_CREATE,
@@ -23,4 +24,9 @@ export const taskDelete = id => ({
 export const taskChangeCheckbox = id => ({
   type:TASK_CHANGE_CHECKBOX,
   id,
+})
+
+export const tasksSet = (tasks) => ({
+  type: TASKS_SET,
+  tasks
 })

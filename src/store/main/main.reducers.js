@@ -1,16 +1,8 @@
-import { TASK_CHANGE_TEXT, TASK_CREATE, TASK_DELETE, TASK_CHANGE_CHECKBOX } from './main.actions'
+import { TASK_CHANGE_TEXT, TASK_CREATE, TASK_DELETE, TASK_CHANGE_CHECKBOX, TASKS_SET } from './main.actions'
 
 const initialState = {
-  tasks: [
-    {
-    content:"2342",
-    isChecked:true,
-    id:616.6338397637521,
-    }
-  ],
+  tasks: [],
 }
-
-
 
 
 const handleTaskCreate = (state, action) => {
@@ -41,16 +33,11 @@ const handleCheckboxChange = (state, action) => {
   }
 }
 
-
-// const handleCheckboxChecked = id => {
-//   const updatedTasks = tasks.map(task =>
-//     task.id === id ? { ...task, isChecked: !task.isChecked } : task,
-//   );
-//   setTasks(updatedTasks);
-// };
-
-
-
+const handleTasksSet = (state, action) => {
+  return {
+    tasks: action.tasks
+  }
+}
 
 export const mainReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -62,49 +49,9 @@ export const mainReducer = (state = initialState, action) => {
       return handleTaskDelete(state, action);
     case TASK_CHANGE_CHECKBOX:
       return handleCheckboxChange(state, action);
+    case TASKS_SET:
+      return handleTasksSet(state, action);
     default:
       return state;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-// const handleBreweriesRequest = (state, action) => {
-//   return {
-//     ...state,
-//     isLoading: true,
-//   }
-  
-// }
-
-// const handleBreweriesSuccess = (state, action) => {
-//   if(action.breweries) {
-//     return {
-//       ...state,
-//       breweries: action.breweries,
-//       isLoading: false,
-//     }
-//   }
-
-//   return state
-// }
-
-
-// export const mainReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case BREWERIES_REQUEST:
-//       return handleBreweriesRequest(state, action);
-//     case BREWERIES_SUCCESS:
-//       return handleBreweriesSuccess(state, action); 
-//     default:
-//        return state;
-//   }
-// }
