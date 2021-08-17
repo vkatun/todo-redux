@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Input } from './styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import  { taskChangeText } from '../../../../../store/main/main.actions';
 
 export const ContentEditor = ({ content, id }) => {

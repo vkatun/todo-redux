@@ -13,11 +13,11 @@ export const Task = ({
   const [isEditorOpened, setIsEditorOpened] = useState(false);
   const dispatch = useDispatch()
   const deleteTask = () => dispatch(taskDelete(id))
-
+  const handleEditorChange = () => setIsEditorOpened((pervState) => !pervState) 
   const handleCheckboxChange = () => dispatch(taskChangeCheckbox(id));
-
+ 
   return (
-    <TaskWrapper key={id} id={id}>
+    <TaskWrapper id={id}>
       <input
         type='checkbox'
         checked={isChecked}
@@ -31,7 +31,7 @@ export const Task = ({
       <ButtonsWrapper>
         <Button
           variant='secondary'
-          onClick={() => setIsEditorOpened(!isEditorOpened)}
+          onClick={handleEditorChange}
         >
           редактировать
         </Button>

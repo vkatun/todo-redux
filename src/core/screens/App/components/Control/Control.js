@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 import { Button, FormControl } from 'react-bootstrap';
 import { ControlWrapper, InputWrapper, ButtonWrapper } from './styled';
 import  { taskCreate } from '../../../../../store/main/main.actions'
+import { DropdownMenu } from '../DropdownMenu/DropdownMenu';
 
 export const Control = () => {
   const [inputText, setInputText] = useState('');
@@ -42,6 +43,7 @@ export const Control = () => {
           onKeyDown={handleEnterDown}
         />
       </InputWrapper>
+      <DropdownMenu />
     </ControlWrapper>
   );
 };

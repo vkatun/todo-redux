@@ -1,9 +1,9 @@
-import { TASK_CHANGE_TEXT, TASK_CREATE, TASK_DELETE, TASK_CHANGE_CHECKBOX, TASKS_SET } from './main.actions'
+import { TASK_CHANGE_TEXT, TASK_CREATE, TASK_DELETE, TASK_CHANGE_CHECKBOX, TASKS_SET, SET_SHOWN_TASKS } from './main.actions'
 
 const initialState = {
   tasks: [],
+  shownTasks: 'showAll',
 }
-
 
 const handleTaskCreate = (state, action) => {
   return {
@@ -35,7 +35,15 @@ const handleCheckboxChange = (state, action) => {
 
 const handleTasksSet = (state, action) => {
   return {
+    ...state,
     tasks: action.tasks
+  }
+}
+
+const handleSetShownTasks = (state, action) => {
+  return {
+  ...state,
+  shownTasks: action.shownTasks
   }
 }
 
@@ -51,6 +59,8 @@ export const mainReducer = (state = initialState, action) => {
       return handleCheckboxChange(state, action);
     case TASKS_SET:
       return handleTasksSet(state, action);
+    case SET_SHOWN_TASKS:
+      return handleSetShownTasks(state, action);
     default:
       return state;
   }

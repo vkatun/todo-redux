@@ -2,32 +2,31 @@ import React from 'react';
 import { Task } from '../Task/Task';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import { ListWrapper } from './styled';
-import { useSelector } from 'react-redux'
-import { useEffect } from 'react';
-
+import { useSelector } from 'react-redux';
+import { getShownTasks } from '../../../../../store/main/main.selectors'
 
 export const List = () => {
   
-  const tasks = useSelector(store => store.main.tasks);
-  
+  const tasks = useSelector(state => getShownTasks(state))
+
   return (
     <ListWrapper>
       <ListGroup>
         {tasks.map(task => {
           return (
-            <ListGroupItem>
-              <Task
-                key={task.id}
-                id={task.id}
-                content={task.content}
-                isChecked={task.isChecked}
-              />
-            </ListGroupItem>
-          );
+          <ListGroupItem key={task.id}>
+            <Task
+              id={task.id}
+              content={task.content}
+              isChecked={task.isChecked}
+            />
+          </ListGroupItem>
+        );
         })}
       </ListGroup>
     </ListWrapper>
   );
-
-
 };
+
+
+// (tasks.length === 0) ? <div>Задач нет</div> : 

@@ -4,6 +4,7 @@ export const ControlWrapper = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  align-items:center;
 `;
 export const InputWrapper = styled.div`
   width: 400px;

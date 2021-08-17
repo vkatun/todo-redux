@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { Control } from './components/Control/Control';
 import { List } from './components/List/List';
 import { AppWrapper } from './styled';

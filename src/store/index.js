@@ -1,4 +1,3 @@
-
 import { createStore } from 'redux';
 import { rootReducer } from './root.reducer';
 
@@ -11,6 +10,3 @@ const configureStore = initialState => {
 }
 
 export default configureStore
-
-
-
