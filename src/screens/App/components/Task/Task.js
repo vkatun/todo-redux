@@ -2,20 +2,19 @@ import { useState } from 'react';
 import { ContentEditor } from '../ContentEditor/ContentEditor';
 import { TaskWrapper, ButtonsWrapper } from './styled';
 import { Button } from 'react-bootstrap';
-import  { taskDelete, taskChangeCheckbox } from '../../../../../store/main/main.actions'
+import {
+  taskDelete,
+  taskChangeCheckbox,
+} from '../../../../store/main/main.actions';
 import { useDispatch } from 'react-redux';
 
-export const Task = ({
-  id,
-  content,
-  isChecked,
-}) => {
+export const Task = ({ id, content, isChecked }) => {
   const [isEditorOpened, setIsEditorOpened] = useState(false);
-  const dispatch = useDispatch()
-  const deleteTask = () => dispatch(taskDelete(id))
-  const handleEditorChange = () => setIsEditorOpened((pervState) => !pervState) 
+  const dispatch = useDispatch();
+  const deleteTask = () => dispatch(taskDelete(id));
+  const handleEditorChange = () => setIsEditorOpened(pervState => !pervState);
   const handleCheckboxChange = () => dispatch(taskChangeCheckbox(id));
- 
+
   return (
     <TaskWrapper id={id}>
       <input
@@ -23,16 +22,9 @@ export const Task = ({
         checked={isChecked}
         onChange={() => handleCheckboxChange(id)}
       />
-      {isEditorOpened ? (
-        <ContentEditor id={id} content={content} />
-      ) : (
-        content
-      )}
+      {isEditorOpened ? <ContentEditor id={id} content={content} /> : content}
       <ButtonsWrapper>
-        <Button
-          variant='secondary'
-          onClick={handleEditorChange}
-        >
+        <Button variant='secondary' onClick={handleEditorChange}>
           редактировать
         </Button>
         <Button variant='danger' onClick={deleteTask}>

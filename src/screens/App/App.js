@@ -1,33 +1,31 @@
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Control } from './components/Control/Control';
 import { List } from './components/List/List';
 import { AppWrapper } from './styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { tasksSet } from '../../../store/main/main.actions';
+import { tasksSet } from '../../store/main/main.actions';
 
 export const App = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const tasks = useSelector(state => state.main.tasks);
-  
 
   useEffect(() => {
     if (tasks.length > 0) {
-    localStorage.setItem('tasks', JSON.stringify(tasks))};
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
   }, [tasks]);
 
- 
- useEffect(() => {
-    const savedTasks = JSON.parse(localStorage.getItem('tasks'))
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks'));
     if (savedTasks.length > 0) {
-      dispatch(tasksSet(savedTasks))
+      dispatch(tasksSet(savedTasks));
     }
-  }, [])
- 
+  }, []);
 
   return (
     <AppWrapper>
-      <Control/>
-      <List/>
+      <Control />
+      <List />
     </AppWrapper>
   );
 };
