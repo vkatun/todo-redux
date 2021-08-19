@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 import { Button, FormControl } from 'react-bootstrap';
 import { ControlWrapper, InputWrapper, ButtonWrapper } from './styled';
-import { taskCreate } from '../../../../store/main/main.actions';
+import  { taskCreate } from '../../../../../store/main/main.actions'
 import { DropdownMenu } from '../DropdownMenu/DropdownMenu';
 
 export const Control = () => {
   const [inputText, setInputText] = useState('');
-
-  const dispatch = useDispatch();
+  
+  const dispatch = useDispatch()
 
   const handleText = e => {
     setInputText(e.target.value);
   };
-
+  
   const handleContent = () => {
     if (inputText) {
       dispatch(taskCreate(inputText));
@@ -26,6 +26,7 @@ export const Control = () => {
       handleContent();
     }
   };
+ 
 
   return (
     <ControlWrapper>
