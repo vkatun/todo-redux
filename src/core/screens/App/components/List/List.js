@@ -29,4 +29,3 @@ export const List = () => {
 };
 
 
-// (tasks.length === 0) ? <div>Задач нет</div> : 

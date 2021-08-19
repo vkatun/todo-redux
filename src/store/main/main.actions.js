@@ -22,7 +22,6 @@ export const taskDelete = id => ({
   id,
 })
 
-
 export const taskChangeCheckbox = id => ({
   type:TASK_CHANGE_CHECKBOX,
   id,
