@@ -7,10 +7,17 @@ import { setShownTasks } from '../../../../store/main/main.actions';
 export const DropdownMenu = () => {
   const dispatch = useDispatch();
   const [buttonText, setButtonText] = useState('Все задачи');
-  const handleOptionClick = (text, value) => {
+
+  const handleOptionClick = () => (text, value) => {
     setButtonText(text);
     dispatch(setShownTasks(value));
   };
+
+  const dropdownMenuItems = [
+    { title: 'Все задачи', action: 'showAll' },
+    { title: 'Только выполненные задачи', action: 'onlyCompleted' },
+    { title: 'Только невыполненные задачи', action: 'onlyUncompleted' },
+  ];
 
   return (
     <Dropdown>
@@ -18,25 +25,11 @@ export const DropdownMenu = () => {
         {buttonText}
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item
-          onClick={() =>
-            handleOptionClick('Только выполненные задачи', 'onlyCompleted')
-          }
-        >
-          Только выполненные задачи
-        </Dropdown.Item>
-        <Dropdown.Item
-          onClick={() =>
-            handleOptionClick('Только невыполненные задачи', 'onlyUncompleted')
-          }
-        >
-          Только невыполненные задачи
-        </Dropdown.Item>
-        <Dropdown.Item
-          onClick={() => handleOptionClick('Все задачи', 'showAll')}
-        >
-          Все задачи
-        </Dropdown.Item>
+        {dropdownMenuItems.map(item => (
+          <Dropdown.Item onClick={handleOptionClick(item.title, item.action)}>
+            {item.title}
+          </Dropdown.Item>
+        ))}
       </Dropdown.Menu>
     </Dropdown>
   );
