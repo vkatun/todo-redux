@@ -1,12 +1,12 @@
 import { createStore } from 'redux';
 import { rootReducer } from './root.reducer';
 
-const configureStore = initialState => {
+export const configureStore = initialState => {
   const store = createStore(
-  rootReducer,
-  initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-  return store
-}
-
-export default configureStore
+    rootReducer,
+    initialState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__(),
+  );
+  return store;
+};
